@@ -7,11 +7,6 @@ const Cart = ({ cart }) => {
       {cart.map((element) => (
         <div>{element.name}</div>
       ))}
-      <div>
-        <button className="rounded">Choose 1 For Me</button>
-
-        <button className="rounded">Choose Again</button>
-      </div>
     </div>
   );
 };

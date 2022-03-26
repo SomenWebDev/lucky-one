@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./Shop.css";
 import Product from "./../Product/Product";
 import Cart from "../Cart/Cart";
+import { faHourglass2 } from "@fortawesome/free-solid-svg-icons";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [randomItem, setRandomItem] = useState([]);
   useEffect(() => {
     fetch("products.json")
       .then((res) => res.json())
@@ -14,6 +16,18 @@ const Shop = () => {
   const handleAddToCart = (selectedProduct) => {
     const newCart = [...cart, selectedProduct];
     setCart(newCart);
+  };
+  const handleRandomItem = () => {
+    const randomProduct = cart;
+    let newrandomProduct =
+      randomProduct[Math.floor(randomProduct.length * Math.random())];
+    const newRandomItem = [newrandomProduct];
+    setRandomItem(newRandomItem);
+  };
+
+  const removeItem = () => {
+    setCart([]);
+    setRandomItem([]);
   };
 
   return (
@@ -29,7 +43,14 @@ const Shop = () => {
           ))}
         </div>
         <div className="cart-container mt-3">
+          <h3>Product You Choose:</h3>
+          {randomItem.map((item) => (
+            <h1>{item.name}</h1>
+          ))}
           <Cart cart={cart}></Cart>
+
+          <button onClick={handleRandomItem}>Choose 1 For me.</button>
+          <button onClick={removeItem}>Choose Again</button>
         </div>
         <div className="description">
           <div>
