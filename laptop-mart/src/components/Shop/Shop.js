@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Shop.css";
 import Product from "./../Product/Product";
 import Cart from "../Cart/Cart";
-import { faHourglass2 } from "@fortawesome/free-solid-svg-icons";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);

@@ -5,7 +5,10 @@ const Cart = ({ cart }) => {
   return (
     <div className="cart">
       {cart.map((element) => (
-        <div>{element.name}</div>
+        <div>
+          {element.name}
+          <h1>{element.length}</h1>
+        </div>
       ))}
     </div>
   );
